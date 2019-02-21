@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+string caesar(int key, string input);
+
+int main() {
+    int key;
+    cout << "請輸入密鑰：";
+    cin >> key;
+
+    string plain;
+    cout << "請輸入明文：";
+    cin >> plain;
+    string cipher = caesar(key, plain);
+    cout << "密文為：" << cipher;
+}
+string caesar(int key, string plain) {
+    for (int i = 0; plain[i] != '\0'; i++) {
+        if (plain[i] >= 'A' && plain[i] <= 'Z') {         
+            plain[i] += key;
+            if (plain[i] > 'Z') {
+                plain[i] -= 26;
+            }
+        } else if (plain[i] >= 'a' && plain[i] <= 'z') { 
+            plain[i] += key;
+            if (plain[i] > 'z') {
+                plain[i] -= 26;
+            }
+        }
+    }
